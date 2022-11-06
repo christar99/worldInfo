@@ -12,7 +12,7 @@ const LoadingWrap = styled.div`
 function Loading() {
     return (
         <LoadingWrap>
-            놀러가자 첫화면
+            Research.IO
         </LoadingWrap>
     )
 };
