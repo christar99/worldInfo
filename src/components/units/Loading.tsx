@@ -6,13 +6,19 @@ const LoadingWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     font-size: 3rem;
 `;
 
 function Loading() {
     return (
         <LoadingWrap>
-            Research.IO
+            <div>
+                WorldInfo
+            </div>
+            <div>
+                세계정보를 한눈에 보자
+            </div>
         </LoadingWrap>
     )
 };

@@ -1,17 +1,16 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { createLogger } from "redux-logger";
-
-const logger = createLogger();
+import common from "store/common";
+import { nation_list } from './nation_list';
 
 const rootReducer = combineReducers({
+    common: common.reducer,
+    nation_list: nation_list.reducer
 });
 
 const store = configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-        serializableCheck: false
-    }).concat(logger),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
     devTools: true,
     enhancers: (defaultEnhancers) => [...defaultEnhancers]
 })
