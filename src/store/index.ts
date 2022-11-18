@@ -1,11 +1,15 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import common from "store/common";
-import { nation_list } from './nation_list';
+import { nationList } from "./nationList";
+import { nationInfo } from "./nationInfo";
+import { worldNews } from "./worldNews";
 
 const rootReducer = combineReducers({
     common: common.reducer,
-    nation_list: nation_list.reducer
+    nationList: nationList.reducer,
+    worldNewsList: worldNews.reducer,
+    nationInfo: nationInfo.reducer
 });
 
 const store = configureStore({

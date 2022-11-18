@@ -15,6 +15,8 @@ const GlobalStyle = createGlobalStyle`
         word-break: keep-all;
         word-wrap: break-word;
         text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+        user-select: none;
         background-color: ${props => props.theme.bgColor};
         color: ${props => props.theme.textColor};
         box-shadow: ${props => props.theme.boxShadow};
@@ -27,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
-        font-size: 2rem;
+        color: ${props => props.theme.textColor};
 
         :visited {
             text-decoration: none;

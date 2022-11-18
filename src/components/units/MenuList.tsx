@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect, useCallback, useRef } from 'react';
 import { useAppSelector } from "store/index";
 import styled from "styled-components";
 import Divider from "components/common/Divider";
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 const MainMenu = styled.div<{ pl?: number}>`
     font-size: 2rem;
@@ -32,17 +32,22 @@ const ContinentTitle = styled.p<{ active: boolean}>`
     height: 30px;
     line-height: ${props => props.active ? '20px' : '30px'};
     color: ${props => props.active ? props.theme.hoverColor : 'inherit'};
+    font-weight: 700;
 `;
 
-const NationMenu = styled.div<{ active: boolean }>`
+const NationMenu = styled.div<{ active: boolean, currentPage: boolean }>`
     font-size: 1.5rem;
     padding: 10px 20px;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
-    color: ${props => props.active ? props.theme.hoverColor : 'inherit'};
+    font-weight: 700;
 
-    :hover {
-        color: ${props => props.theme.hoverColor};
+    a {
+        color: ${props => props.active || props.currentPage ? props.theme.hoverColor : 'inherit'};
+        :hover {
+            color: ${props => props.theme.hoverColor};
+        }
     }
+    
 `;
 
 type MenuListProps = {
@@ -50,8 +55,8 @@ type MenuListProps = {
 }
 
 function MenuList({ searchValue }: MenuListProps) {
-    const nation_list = useAppSelector(state => state.nation_list);
-    const { nations } = nation_list;
+    const nationList = useAppSelector(state => state.nationList);
+    const { nations } = nationList;
     const continent: string[] = useMemo(() => {
         const continent_set = new Set<string>();
         nations.forEach((nation) => {
@@ -68,6 +73,7 @@ function MenuList({ searchValue }: MenuListProps) {
 
     const nationRef = useRef<null[] | HTMLDivElement[]>([]);
 
+    const currentPage = useMatch("nation/:id");
 
     const openSubMenuCallback = useCallback((index: number, fromSearch: boolean) => {
         openSubMenu((subMenu) => subMenu.map((notUse, idx: number) => {
@@ -112,7 +118,7 @@ function MenuList({ searchValue }: MenuListProps) {
         <div>
             <>
             <MainMenu pl={30}>
-                <Link to="/">세계 뉴스</Link>
+                <Link to="/?page=1&limit=10">국제 뉴스</Link>
             </MainMenu>
             <Divider />
             <MainMenu pl={30}>
@@ -145,8 +151,9 @@ function MenuList({ searchValue }: MenuListProps) {
                                             key={nation_idx}
                                             active={searchValue === nation?.name}
                                             ref={element => nationRef.current[nation_idx] = element}
+                                            currentPage={Number(currentPage?.params.id) === nation_idx + 1}
                                         >
-                                            <Link to={{ pathname:`nation/${nation_idx}` }}>
+                                            <Link to={{ pathname:`nation/${nation_idx + 1}` }}>
                                                 { nation?.name }
                                             </Link>
                                         </NationMenu>

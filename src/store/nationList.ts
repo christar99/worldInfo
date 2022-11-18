@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { worldInfo_api } from "api/worldInfo_api";
+import { worldInfoApi } from "api/worldInfoApi";
 
 interface NationListState {
     nations: [{
         idx: number,
         name: string;
         continent: string;
+        code: string;
     }?];
     status: string;
 };
@@ -15,20 +16,20 @@ const initialState: NationListState = {
     status: ''
 };
 
-export const nation_list = createSlice({
+export const nationList = createSlice({
     name: 'getNationsList',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(worldInfo_api.getNationsList.pending, (state) => {
+        .addCase(worldInfoApi.getNationsList.pending, (state) => {
             state.status = 'pending';
         })
-        .addCase(worldInfo_api.getNationsList.fulfilled, (state, action) => {
+        .addCase(worldInfoApi.getNationsList.fulfilled, (state, action) => {
             action.payload.data.forEach(nation => state.nations.push(nation));
             state.status = 'complete';
         })
-        .addCase(worldInfo_api.getNationsList.rejected, (state) => {
+        .addCase(worldInfoApi.getNationsList.rejected, (state) => {
             state.status = 'error';
         })
     }

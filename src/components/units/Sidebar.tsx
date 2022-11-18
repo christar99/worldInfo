@@ -1,10 +1,12 @@
-import { GiHamburgerMenu } from 'react-icons/gi';
-import styled from 'styled-components';
 import { ChangeEvent, useState, useEffect } from 'react';
-import { BiSearchAlt2 } from 'react-icons/bi';
-import { VscClose } from 'react-icons/vsc';
+import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from 'store/index';
+import { setOpenMenu } from 'store/common';
 import Divider from 'components/common/Divider';
 import MenuList from 'components/units/MenuList';
+import { BiSearchAlt2 } from 'react-icons/bi';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { VscClose } from 'react-icons/vsc';
 
 const SidebarContainer = styled.div`
     position: fixed;
@@ -84,7 +86,8 @@ const CloseButton = styled.div`
 
 
 function Sidebar() {
-    const [openMenu, setOpenMenu] = useState<boolean>(true);
+    const openMenu = useAppSelector(state => state.common.openMenu);
+    const dispatch = useAppDispatch();
     const [searchValue, setSearchValue] = useState<string>('');
 
     const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +107,7 @@ function Sidebar() {
     return (
         <>
             <SidebarContainer>
-                <MenuOpenButton openMenu={openMenu} onClick={() => setOpenMenu(!openMenu)}>
+                <MenuOpenButton openMenu={openMenu} onClick={() => dispatch(setOpenMenu())}>
                     <GiHamburgerMenu />
                 </MenuOpenButton>
                 <SidebarArea openMenu={openMenu}>

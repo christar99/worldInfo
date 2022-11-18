@@ -5,7 +5,9 @@ declare module 'styled-components' {
         sideBarColor: string;
         textColor: string;
         boxShadow: string;
+        boxBorder: string;
         border: string;
         hoverColor: string;
+        activeColor: string;
     }
 }
