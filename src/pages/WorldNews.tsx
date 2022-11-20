@@ -189,7 +189,14 @@ function WorldNews() {
 			{currentLoadArticles.map((article, index) => {
 				return (
 					<NewsList key={index}>
-						<ArticleImage src={article?.urlToImage} onClick={() => goToNewsSite(article?.urlToImage)} />
+						<ArticleImage
+							src={
+								article?.urlToImage === null
+									? require('../assets/img/noimage.png')
+									: article?.urlToImage
+							}
+							onClick={() => goToNewsSite(article?.url)}
+						/>
 						<NewsContent>
 							<div>
 								<NewsTitle onClick={() => goToNewsSite(article?.url)}>{article?.title}</NewsTitle>
