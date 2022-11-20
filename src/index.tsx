@@ -15,7 +15,7 @@ dayjs.locale('ko');
 
 root.render(
 	<Provider store={store}>
-		<Router basename="/world-info">
+		<Router basename="/worldinfo">
 			<App />
 		</Router>
 	</Provider>
