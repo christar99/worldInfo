@@ -69,5 +69,5 @@
 		"@types/navermaps": "^3.6.0",
 		"craco-alias": "^3.0.1"
 	},
-	"homepage": "https://christar99.github.io/worldInfo"
+	"homepage": "https://christar99.github.io/worldInfo/"
 }
