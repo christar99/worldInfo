@@ -13,7 +13,7 @@ const LoadingWrap = styled.div`
 function Loading() {
 	return (
 		<LoadingWrap>
-			<div>WorldInfo</div>
+			<div>showWorld</div>
 		</LoadingWrap>
 	);
 }
