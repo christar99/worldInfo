@@ -1,12 +1,12 @@
-import { useAppSelector, useAppDispatch } from 'store/index';
+import { useAppSelector, useAppDispatch } from '@/store/index';
 import { useMemo, useState, ChangeEvent, FormEvent, useEffect, useRef } from 'react';
-import { worldInfoApi } from 'api/worldInfoApi';
+import { worldInfoApi } from '@/api/worldInfoApi';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import Pagination from 'components/common/Pagination';
+import Pagination from '@/components/common/Pagination';
 import queryString from 'query-string';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import { loading } from 'store/common';
+import { loading } from '@/store/common';
 
 const WorldNewsWrap = styled.div`
 	width: 100%;

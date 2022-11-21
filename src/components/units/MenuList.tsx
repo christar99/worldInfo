@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect, useCallback, useRef } from 'react';
-import { useAppSelector } from 'store/index';
-import styled from 'styled-components';
-import Divider from 'components/common/Divider';
 import { Link, useMatch } from 'react-router-dom';
+import { useAppSelector } from '@/store/index';
+import styled from 'styled-components';
+import Divider from '@/components/common/Divider';
 
 const MainMenu = styled.div<{ pl?: number }>`
 	font-size: 2rem;
@@ -42,8 +42,7 @@ const NationMenu = styled.div<{ active: boolean; currentPage: boolean }>`
 	font-weight: 700;
 
 	a {
-		color: ${(props) =>
-			props.active || props.currentPage ? props.theme.hoverColor : 'inherit'};
+		color: ${(props) => (props.active || props.currentPage ? props.theme.hoverColor : 'inherit')};
 		:hover {
 			color: ${(props) => props.theme.hoverColor};
 		}
@@ -67,9 +66,7 @@ function MenuList({ searchValue }: MenuListProps) {
 		return Array.from(continent_set).sort((a: string, b: string) => (a > b ? 1 : -1));
 	}, [nations]);
 
-	const [subMenu, openSubMenu] = useState<Array<boolean>>(
-		new Array(continent.length).fill(false)
-	);
+	const [subMenu, openSubMenu] = useState<Array<boolean>>(new Array(continent.length).fill(false));
 
 	const nationRef = useRef<null[] | HTMLDivElement[]>([]);
 
@@ -130,17 +127,12 @@ function MenuList({ searchValue }: MenuListProps) {
 				{continent.map((name, index) => {
 					return (
 						<ContinentMenu key={name}>
-							<ContinentTitle
-								active={subMenu[index]}
-								onClick={() => openSubMenuCallback(index, false)}>
+							<ContinentTitle active={subMenu[index]} onClick={() => openSubMenuCallback(index, false)}>
 								<span>
 									{subMenu[index] ? '▾' : '▸'}
 									{name}
 								</span>
-								<span>
-									({nations.filter((nation) => nation?.continent === name).length}
-									)
-								</span>
+								<span>({nations.filter((nation) => nation?.continent === name).length})</span>
 							</ContinentTitle>
 							{nations.map((nation, nation_idx) => {
 								return (
@@ -149,15 +141,9 @@ function MenuList({ searchValue }: MenuListProps) {
 										<NationMenu
 											key={nation_idx}
 											active={searchValue === nation?.name}
-											ref={(element) =>
-												(nationRef.current[nation_idx] = element)
-											}
-											currentPage={
-												Number(currentPage?.params.id) === nation_idx + 1
-											}>
-											<Link to={{ pathname: `nation/${nation_idx + 1}` }}>
-												{nation?.name}
-											</Link>
+											ref={(element) => (nationRef.current[nation_idx] = element)}
+											currentPage={Number(currentPage?.params.id) === nation_idx + 1}>
+											<Link to={{ pathname: `nation/${nation_idx + 1}` }}>{nation?.name}</Link>
 										</NationMenu>
 									)
 								);
