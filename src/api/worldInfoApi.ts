@@ -6,7 +6,7 @@ const newsApiURL = 'https://newsapi.org/v2/everything?';
 const nationInfoApiURL = 'http://apis.data.go.kr/1262000';
 
 export const worldInfoApi = {
-	// RDBMS
+	// RDBMSthunk
 	getNationsList: createAsyncThunk('worldInfoApi/getNationsList', async () => {
 		const response = await axios.get<NationInfo[]>(defaultApiURL + '/nations');
 		return response;
