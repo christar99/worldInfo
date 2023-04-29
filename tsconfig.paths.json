@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "paths": {
-            "api/*": ["src/api/*"],
-            "components/*": ["src/components/*"],
-            "common/*": ["src/common/*"],
-            "pages/*": ["src/pages/*"],
-            "store/*": ["src/store/*"]
-        }
-    }
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/api/*": ["src/api/*"],
+			"@/common/*": ["src/common/*"],
+			"@/components/*": ["src/components/*"],
+			"@/pages/*": ["src/pages/*"],
+			"@/store/*": ["src/store/*"]
+		}
+	}
 }

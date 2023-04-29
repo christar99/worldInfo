@@ -1,12 +1,12 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useMatch } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAppDispatch, useAppSelector } from 'store/index';
-import { worldInfoApi } from 'api/worldInfoApi';
-import GeneralInfo from 'components/units/NationInfo/GeneralInfo';
-import EconomyInfo from 'components/units/NationInfo/EconomyInfo';
-import PoliticsInfo from 'components/units/NationInfo/PoliticsInfo';
-import { loading } from 'store/common';
+import { useAppDispatch, useAppSelector } from '@/store/index';
+import { worldInfoApi } from '@/api/worldInfoApi';
+import GeneralInfo from '@/components/units/NationInfo/GeneralInfo';
+import EconomyInfo from '@/components/units/NationInfo/EconomyInfo';
+import PoliticsInfo from '@/components/units/NationInfo/PoliticsInfo';
+import { loading } from '@/store/common';
 
 const NationContainer = styled.div`
 	margin-left: 20%;

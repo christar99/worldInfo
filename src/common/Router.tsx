@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import PageNotFound from 'pages/PageNotFound';
-import WorldNews from 'pages/WorldNews';
-import Statistics from 'pages/Statistics';
-import Nations from 'pages/Nation';
+import PageNotFound from '@/pages/PageNotFound';
+import WorldNews from '@/pages/WorldNews';
+import Statistics from '@/pages/Statistics';
+import Nations from '@/pages/Nation';
 
 const Router = () => (
 	<Routes>

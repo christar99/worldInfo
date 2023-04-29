@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { worldInfoApi } from 'api/worldInfoApi';
+import { worldInfoApi } from '@/api/worldInfoApi';
 
 interface NationGeneralInfoState {
 	status: string;

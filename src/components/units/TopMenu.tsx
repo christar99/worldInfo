@@ -1,6 +1,6 @@
 import { BsMoon, BsSun } from 'react-icons/bs';
-import { setDarkMode } from 'store/common';
-import { useAppDispatch, useAppSelector } from 'store/index';
+import { setDarkMode } from '@/store/common';
+import { useAppDispatch, useAppSelector } from '@/store/index';
 import styled from 'styled-components';
 
 const TopMenuContainer = styled.div`
