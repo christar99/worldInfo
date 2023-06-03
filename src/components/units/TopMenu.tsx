@@ -37,7 +37,7 @@ function TopMenu() {
 				{!darkMode ? (
 					<BsSun title="다크테마로 변경하자" onClick={() => dispatch(setDarkMode())} />
 				) : (
-					<BsMoon title="라이트테마로 변경" onClick={() => dispatch(setDarkMode())} />
+					<BsMoon title="라이트테마로 변경하자" onClick={() => dispatch(setDarkMode())} />
 				)}
 			</TopMenuArea>
 		</TopMenuContainer>
